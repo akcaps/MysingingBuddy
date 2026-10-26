@@ -1,0 +1,138 @@
+:root {
+  --primary: #087b72;
+  --primary-deep: #075d57;
+  --accent-deep: #a42c53;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --shadow: 0 16px 48px rgba(3, 22, 28, 0.14);
+}
+
+body {
+  font-family: "Segoe UI", "Aptos", sans-serif;
+  line-height: 1.55;
+  background: radial-gradient(ellipse at 0 0, #164c50 0, transparent 55%), #0c2029;
+  background-attachment: fixed;
+}
+
+[hidden] { display: none !important; }
+button, input, select, textarea { font: inherit; }
+button { touch-action: manipulation; }
+input, select, textarea { max-width: 100%; min-width: 0; }
+button:focus-visible, a:focus-visible {
+  outline: 3px solid #b86b00;
+  outline-offset: 4px;
+}
+h1, h2, h3 { line-height: 1.15; letter-spacing: -0.035em; }
+h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); }
+p { line-height: 1.6; }
+
+.auth-shell, .app-shell { max-width: 1360px; padding: 32px 24px 48px; }
+.auth-card { min-height: calc(100vh - 80px); gap: 64px; background: #f5faf8; }
+.auth-copy h1 { font-size: clamp(2.8rem, 5.5vw, 5.4rem); max-width: 9ch; }
+.auth-copy .hero-copy { max-width: 32ch; color: #425e60; font-weight: 400; }
+.auth-panel { background: #fff; padding: 30px; border-color: #d6e3df; }
+.auth-form { gap: 18px; }
+.auth-form label { font-weight: 600; }
+.auth-form input { border-radius: 10px; padding: 13px 15px; }
+.auth-form .button.accent { margin: 4px 0 0; background: #075d57; }
+.auth-tabs { background: #edf4f1; padding: 4px; border-radius: 12px; }
+.tab-button { border-radius: 9px; background: transparent; font-weight: 600; }
+.tab-button.active { background: #075d57; box-shadow: 0 3px 8px #075d5720; }
+.auth-message, .legal-note { font-weight: 400; }
+.legal-note { font-size: 0.8rem; }
+
+.hero-card { padding: 30px 36px; background: #123d42; box-shadow: none; }
+.hero-card::after { display: none; }
+.hero-card h1 { font-size: clamp(2rem, 3.8vw, 3.6rem); }
+.hero-card .hero-copy { font-weight: 400; max-width: 60ch; font-size: 1rem; }
+.hero-metrics { gap: 8px; margin-top: 16px; }
+.hero-metrics span { min-height: 30px; padding: 4px 10px; font-size: 0.8rem; font-weight: 500; border-radius: 7px; }
+.hero-actions { justify-content: center; min-width: 180px; }
+.hero-badge { background: transparent; border: 0; padding: 8px; }
+.content-grid { gap: 24px; align-items: start; }
+.card { background: #fff; padding: 28px; border-color: #d9e5e1; box-shadow: var(--shadow); min-width: 0; }
+.section-tag { font-size: 0.75rem; letter-spacing: 0.12em; color: #087b72; margin-bottom: 8px; }
+.section-heading { margin-bottom: 24px; }
+.card label { font-weight: 600; font-size: 0.95rem; }
+.card input, .card select, .card textarea { border-radius: 10px; background: #fff; border: 1px solid #b8cec7; padding: 12px 14px; }
+.card input:focus, .card select:focus, .card textarea:focus { outline: 3px solid #087b7230; border-color: #087b72; }
+.field-help, .audio-panel p, .support-note p, .song-card-meta, .buddy-role, #studentPhotoStatus { font-weight: 400; color: #496561; font-size: 0.9rem; }
+.buddy-preview, .student-preview, .session-panel, .audio-panel, .support-note, .song-card { background: #f3f8f6; border-color: #dce8e2; box-shadow: none; }
+.buddy-bubble { font-size: 1rem; font-weight: 500; background: #fff7ce; }
+.buddy-role { display: none; }
+.character-option, .emoji-option { border-radius: 12px; box-shadow: none; }
+.character-option { padding: 10px 6px; }
+.character-option span, .emoji-option span { overflow-wrap: anywhere; }
+.studio-flow { gap: 8px; }
+.studio-flow div { padding: 10px; background: #f3f8f6; border-radius: 10px; }
+.studio-flow span { font-weight: 500; font-size: 0.83rem; }
+.audio-panel { padding: 16px; }
+.audio-panel strong { font-size: 0.95rem; }
+.time-field { padding: 14px; border-radius: 12px; background: #f3f8f6; }
+.time-field legend { font-size: 0.9rem; font-weight: 600; padding: 0 6px; }
+.time-pair { gap: 10px; }
+.cue-row { border-radius: 12px; }
+.button { border-radius: 10px; padding: 13px 18px; min-height: 48px; font-weight: 600; line-height: 1.35; white-space: normal; }
+.button.primary { background: #075d57; box-shadow: 0 5px 12px #075d5718; }
+.button.accent { background: #a42c53; box-shadow: none; }
+.button.ghost { color: #075d57; background: #fff; box-shadow: inset 0 0 0 1px #b8cec7; }
+.button.secondary { background: #eaf3ef; box-shadow: none; }
+.rehearsal-card .session-panel { padding: 22px; display: block; }
+.rehearsal-card #activeSongTitle { font-size: 1.55rem; margin: 8px 0; overflow-wrap: anywhere; }
+.rehearsal-card #activeSongSummary { font-weight: 400; margin: 10px 0 0; }
+.rehearsal-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+.rehearsal-actions > * { min-width: 0; width: 100%; flex: initial; }
+.rehearsal-actions #openLiveButton { grid-column: 1 / -1; min-height: 56px; font-size: 1rem; }
+.support-note { padding: 18px; margin-top: 18px; background: transparent; border: 0; border-top: 1px solid #dce8e2; border-radius: 0; }
+.support-note p { margin-bottom: 0; }
+.song-card { flex-direction: column; }
+.song-card-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.song-card-actions .button { flex: 1; padding: 10px; font-size: 0.9rem; }
+.site-footer { background: transparent; border: 0; color: #bdd1cc; font-weight: 400; font-size: 0.8rem; box-shadow: none; }
+
+.live-shell { max-width: 1600px; margin: auto; padding: 32px; gap: 24px; }
+.live-header { padding-bottom: 22px; border-bottom: 1px solid #ffffff24; }
+.live-header h1 { font-size: clamp(2rem, 4.2vw, 4rem); line-height: 1.15; }
+.student-pill { min-width: 180px; border-radius: 14px; padding: 10px 14px; }
+.student-pill img { width: 54px; height: 54px; border-width: 2px; }
+.student-pill span { font-size: 0.75rem; }
+.kicker { font-size: 0.75rem; letter-spacing: 0.13em; }
+.stage { gap: 22px; }
+.device-profile { width: min(100%, 1180px); grid-template-columns: 0.8fr 1.2fr; background: #ffffff09; box-shadow: none; border-color: #ffffff24; padding: 20px 24px; }
+.device-profile h2 { font-size: 1.4rem; }
+.device-profile-fields label { font-size: 0.78rem; font-weight: 600; }
+.device-profile-fields input { min-width: 0; border-radius: 10px; min-height: 48px; font-weight: 400; font-size: 0.95rem; padding: 10px 12px; }
+input[type="file"]::file-selector-button { border: 0; border-radius: 6px; padding: 7px 10px; margin-right: 10px; background: #d9eee7; color: #075d57; font: inherit; cursor: pointer; }
+.live-buddy-bubble { font-weight: 600; font-size: clamp(1.05rem, 1.8vw, 1.4rem); border-radius: 16px; box-shadow: none; }
+.stage-status { font-weight: 500; font-size: 1.1rem; background: #f2faf5; border-radius: 12px; }
+.live-button { min-width: 130px; min-height: 50px; border-radius: 12px; font-weight: 600; font-size: 1rem; padding: 14px 20px; }
+.live-button.primary { background: #a42c53; box-shadow: none; }
+.song-choice, .section-choice { box-shadow: none; border-radius: 12px; }
+.live-footer { font-weight: 400; font-size: 0.8rem; }
+
+@media (max-width: 1100px) {
+  .profile-card, .rehearsal-card { grid-column: span 5; }
+  .studio-card, .library-card { grid-column: span 7; }
+  .studio-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cue-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .auth-shell, .app-shell { padding: 16px 12px 32px; }
+  .auth-card { grid-template-columns: 1fr; gap: 24px; padding: 22px; }
+  .auth-copy { padding: 0; }
+  .auth-copy h1 { font-size: 2.8rem; max-width: 12ch; }
+  .auth-panel { padding: 20px; }
+  .hero-card { flex-direction: column; padding: 24px; gap: 16px; }
+  .hero-actions { flex-direction: row; align-items: center; justify-content: space-between; }
+  .hero-badge { align-self: auto; text-align: left; }
+  .hero-metrics { display: none; }
+  .profile-card, .studio-card, .rehearsal-card, .library-card { grid-column: 1 / -1; }
+  .card { padding: 22px; }
+  .content-grid { gap: 18px; }
+  .live-shell { padding: 18px 14px; }
+  .device-profile { grid-template-columns: 1fr; padding: 18px; }
+  .device-profile-fields { grid-template-columns: 1fr; }
+  .live-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .live-button { min-width: 0; }
+}

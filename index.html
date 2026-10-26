@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Make music together with My Singing Buddy. Create choir sections, prepare lyric cues, and share a live rehearsal across devices.">
+  <meta name="referrer" content="no-referrer">
+  <title>Voice for All | My Singing Buddy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="polish.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
+  <section class="auth-shell" id="authShell">
+    <div class="auth-card">
+      <div class="auth-copy">
+        <p class="eyebrow">Voice for All</p>
+        <h1>Everyone has a part.</h1>
+        <p class="hero-copy">
+          Join the music with visual cues, shared rehearsals, and a singing buddy by your side.
+        </p>
+      </div>
+
+      <div class="auth-panel">
+        <div class="auth-tabs">
+          <button class="tab-button active" id="showLoginButton" type="button">Log In</button>
+          <button class="tab-button" id="showSignupButton" type="button">Sign Up</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label>
+            Email
+            <input id="loginEmail" type="email" placeholder="teacher@example.com" required>
+          </label>
+
+          <label>
+            Password
+            <input id="loginPassword" type="password" placeholder="Enter your password" required>
+          </label>
+
+          <button class="button primary" type="submit">Enter My Singing Buddy</button>
+          <button class="auth-link-button" id="showResetButton" type="button">Forgot password?</button>
+        </form>
+
+        <form id="signupForm" class="auth-form hidden">
+          <label>
+            Display name
+            <input id="signupName" type="text" placeholder="Music teacher or choir leader" required>
+          </label>
+
+          <label>
+            Email
+            <input id="signupEmail" type="email" placeholder="teacher@example.com" required>
+          </label>
+
+          <label>
+            Password
+            <input id="signupPassword" type="password" placeholder="Create a password" required>
+          </label>
+
+          <label>
+            Confirm password
+            <input id="signupConfirmPassword" type="password" placeholder="Confirm your password" required>
+          </label>
+
+          <button class="button accent" type="submit">Create Account</button>
+        </form>
+
+        <form id="passwordResetForm" class="auth-form hidden">
+          <label>
+            Account email
+            <input id="resetEmail" type="email" placeholder="teacher@example.com">
+          </label>
+
+          <button class="button secondary" id="requestResetCodeButton" type="button">Get Reset Code</button>
+
+          <label>
+            Reset code
+            <input id="resetCode" type="text" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit code">
+          </label>
+
+          <label>
+            New password
+            <input id="resetPassword" type="password" placeholder="Create a new password">
+          </label>
+
+          <label>
+            Confirm new password
+            <input id="resetConfirmPassword" type="password" placeholder="Confirm new password">
+          </label>
+
+          <button class="button primary" type="submit">Change Password</button>
+          <button class="auth-link-button" id="backToLoginButton" type="button">Back to log in</button>
+          <p class="auth-note">Contact Akshay Setty for help recovering your account.</p>
+        </form>
+
+        <div id="verificationPanel" class="auth-form hidden">
+          <label>
+            Email confirmation code
+            <input id="verificationCode" type="text" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit code">
+          </label>
+
+          <button class="button primary" id="verifyAccountButton" type="button">Confirm Email</button>
+          <button class="button secondary" id="resendCodeButton" type="button">Get New Code</button>
+        </div>
+
+        <p class="auth-message" id="authMessage">Log in or create an account to continue.</p>
+        <p class="legal-note">© 2026 Akshay Setty. My Singing Buddy and Voice for All. All rights reserved.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-shell hidden" id="appShell">
+    <header class="hero-card">
+      <div>
+        <p class="eyebrow">Voice for All rehearsal studio</p>
+        <h1>My Singing Buddy</h1>
+        <p class="hero-copy">
+          Build choir sections, upload rehearsal tracks, and guide each GO moment with clear visual lyrics.
+        </p>
+        <div class="hero-metrics" aria-label="Rehearsal features">
+          <span>Shared sessions</span>
+          <span>Section cues</span>
+          <span>Lyric cues</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <div class="hero-badge">
+          <span>Signed in</span>
+          <strong id="welcomeName">Hello</strong>
+        </div>
+        <button class="button ghost" id="logoutButton" type="button">Log Out</button>
+      </div>
+    </header>
+
+    <main class="content-grid" id="mainContent">
+      <section class="card profile-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-tag">1. Personalize</p>
+            <h2>Your Singing Buddy</h2>
+          </div>
+        </div>
+
+        <div class="buddy-preview" id="buddyPreview">
+          <div class="buddy-stack">
+            <div class="buddy-character-slot" id="buddyCharacterSlot" aria-hidden="true"></div>
+            <div class="buddy-avatar" id="buddyAvatar">
+              <span id="buddyEmoji">&#9733;</span>
+            </div>
+          </div>
+          <div>
+            <h3 id="buddyNameDisplay">Jamie</h3>
+            <p id="buddyMoodDisplay">Calm helper</p>
+          </div>
+        </div>
+
+        <div class="buddy-guide">
+          <div class="buddy-bubble" id="buddyMessage">I will show the right lyrics when each GO cue is pressed.</div>
+          <p class="buddy-role">The buddy keeps the live screen calm, clear, and focused on the next lyric cue.</p>
+        </div>
+
+        <label>
+          Choose buddy helper
+          <div class="character-picker" id="characterPicker" role="group" aria-label="Choose buddy helper character"></div>
+        </label>
+
+        <label>
+          Buddy name
+          <input id="buddyName" type="text" maxlength="30" placeholder="Enter a buddy name">
+        </label>
+
+        <label>
+          Buddy icon
+          <div class="emoji-picker" id="emojiPicker" role="group" aria-label="Select buddy icon"></div>
+        </label>
+
+        <label>
+          Cue display name
+          <input id="studentName" type="text" maxlength="30" placeholder="Your name or section">
+        </label>
+
+        <label>
+          Cue picture
+          <input id="studentPhotoUpload" type="file" accept="image/*">
+        </label>
+
+        <div class="student-preview" id="studentPreview">
+          <img id="studentPhotoPreview" alt="Session profile preview">
+          <div>
+            <p class="session-label">Cue target</p>
+            <h3 id="studentNameDisplay">Student</h3>
+            <p id="studentPhotoStatus">Your cue preview</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card studio-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-tag">2. Set Up A Song</p>
+            <h2>Song Studio</h2>
+          </div>
+        </div>
+
+        <div class="studio-flow" aria-label="Song setup steps">
+          <div>
+            <strong>1</strong>
+            <span>Upload karaoke</span>
+          </div>
+          <div>
+            <strong>2</strong>
+            <span>Add singer track</span>
+          </div>
+          <div>
+            <strong>3</strong>
+            <span>Assign sections</span>
+          </div>
+          <div>
+            <strong>4</strong>
+            <span>Save and rehearse</span>
+          </div>
+        </div>
+
+        <label>
+          Song title
+          <input id="songTitle" type="text" maxlength="40" placeholder="Example: Rainbow Song">
+        </label>
+
+        <div class="section-builder" aria-label="Choir section setup">
+          <div>
+            <label>
+              Choir sections
+              <input id="sectionCount" type="number" min="1" max="10" step="1" value="1" inputmode="numeric">
+            </label>
+            <p class="field-help">Create up to 10 sections. Assign each cue to a section for the live screen.</p>
+          </div>
+          <div id="sectionList" class="section-list"></div>
+        </div>
+
+        <label>
+          Upload karaoke track
+          <input id="trackUpload" type="file" accept="audio/*">
+        </label>
+
+        <div class="audio-panel">
+          <div>
+            <strong id="trackStatus">No karaoke track uploaded yet</strong>
+            <p id="trackMeta">This is the track the teen screen follows.</p>
+          </div>
+          <audio id="trackPlayer" controls preload="metadata"></audio>
+        </div>
+
+        <label>
+          Upload real singer track
+          <input id="realTrackUpload" type="file" accept="audio/*">
+        </label>
+
+        <div class="audio-panel">
+          <div>
+            <strong id="cueStatus">No real singer track uploaded yet</strong>
+            <p>Use separate singer start times when this file does not match the karaoke timeline.</p>
+          </div>
+          <audio id="cuePlayer" controls preload="metadata"></audio>
+        </div>
+
+        <div class="cue-grid">
+          <label>
+            Cue name
+            <input id="cueLabel" type="text" maxlength="30" placeholder="Chorus entry">
+          </label>
+
+          <label>
+            Assign to section
+            <select id="cueSectionSelect"></select>
+          </label>
+
+          <label class="cue-lyrics-field">
+            Lyrics shown after GO
+            <textarea id="cueLyrics" maxlength="220" rows="3" placeholder="Type the words students should see for this cue"></textarea>
+          </label>
+
+          <fieldset class="time-field">
+            <legend>Cue appears at</legend>
+            <div class="time-pair">
+              <label>
+                Min
+                <input id="cueStartMinutes" type="number" min="0" step="1" value="0" inputmode="numeric">
+              </label>
+              <label>
+                Sec
+                <input id="cueStartSeconds" type="number" min="0" max="59.9" step="0.5" value="10" inputmode="decimal">
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="time-field">
+            <legend>Singer audio starts at</legend>
+            <div class="time-pair">
+              <label>
+                Min
+                <input id="singerStartMinutes" type="number" min="0" step="1" value="0" inputmode="numeric">
+              </label>
+              <label>
+                Sec
+                <input id="singerStartSeconds" type="number" min="0" max="59.9" step="0.5" value="10" inputmode="decimal">
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="time-field">
+            <legend>Clip length</legend>
+            <div class="time-pair">
+              <label>
+                Min
+                <input id="cueDurationMinutes" type="number" min="0" step="1" value="0" inputmode="numeric">
+              </label>
+              <label>
+                Sec
+                <input id="cueDurationSeconds" type="number" min="0" max="59.9" step="0.5" value="4" inputmode="decimal">
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="record-controls">
+          <button class="button ghost" id="newSongButton" type="button">New Song</button>
+        </div>
+
+        <button class="button secondary full-width" id="addCueButton" type="button">Add GO Cue</button>
+
+        <div class="timeline-editor">
+          <div class="timeline-editor-head">
+            <strong>Timed singer cue boxes</strong>
+            <span id="cueCount">0 cues</span>
+          </div>
+          <div id="cueIntervalList" class="cue-interval-list"></div>
+        </div>
+
+        <button class="button accent" id="saveSongButton" type="button">Save Song</button>
+        <p class="save-status" id="saveStatus" role="status"></p>
+      </section>
+
+      <section class="card rehearsal-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-tag">3. Rehearse</p>
+            <h2>Live Cue Screen</h2>
+          </div>
+        </div>
+
+        <div class="session-panel">
+          <div>
+            <p class="session-label">Selected session</p>
+            <h3 id="activeSongTitle">No song selected</h3>
+            <p id="activeSongSummary">Save a song to start your rehearsal.</p>
+          </div>
+
+          <div class="session-preview" hidden>
+            <img id="cueTargetPhoto" alt="Session profile preview">
+            <div>
+              <strong id="cueTargetName">Student</strong>
+              <p id="sliderStatus">Open the big-screen page after saving a song.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rehearsal-actions">
+          <button class="button primary" id="openLiveButton" type="button">Open Live Screen</button>
+          <button class="button ghost" id="playTrackButton" type="button">Preview Audio</button>
+          <button class="button ghost" id="stopTrackButton" type="button">Stop Audio</button>
+        </div>
+
+        <div class="support-note">
+          <strong>Ready, together.</strong>
+          <p>
+            Open the live screen on each device, choose a section, and press Ready. Start the song together from one screen.
+          </p>
+        </div>
+      </section>
+
+      <section class="card library-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-tag">4. Your Library</p>
+            <h2>Saved Songs</h2>
+          </div>
+        </div>
+
+        <div id="emptyLibrary" class="empty-state">
+          Saved songs will appear here for rehearsals on this account.
+        </div>
+
+        <div id="songLibrary" class="song-library"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Akshay Setty. My Singing Buddy and Voice for All. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <template id="songCardTemplate">
+    <article class="song-card">
+      <div>
+        <p class="song-card-tag">Saved rehearsal</p>
+        <h3 class="song-card-title"></h3>
+        <p class="song-card-meta"></p>
+      </div>
+      <div class="song-card-actions">
+        <button class="button secondary load-song-button" type="button">Load</button>
+        <button class="button secondary sync-audio-button" type="button">Sync audio</button>
+        <button class="button ghost delete-song-button" type="button">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My Singing Buddy live cue screen for section-based accessible choir participation.">
+  <meta name="referrer" content="no-referrer">
+  <title>My Singing Buddy Live Cue</title>
+  <link rel="stylesheet" href="live.css">
+  <link rel="stylesheet" href="polish.css">
+</head>
+<body>
+  <a class="skip-link" href="#liveMain">Skip to live controls</a>
+  <main class="live-shell">
+    <header class="live-header">
+      <div>
+        <p class="kicker">My Singing Buddy</p>
+        <h1 id="liveSongTitle">Live Cue Screen</h1>
+      </div>
+      <div class="student-pill">
+        <img id="liveStudentPhoto" alt="Session profile preview">
+        <div>
+          <span>Today</span>
+          <strong id="liveStudentName">Student</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="live-login hidden" id="liveLoginPanel" aria-label="Join live session">
+      <div>
+        <p class="kicker">Join Session</p>
+        <h2>Sign in on this screen</h2>
+        <p>Use the same account as the teacher device so this screen can see the saved songs and shared start command.</p>
+      </div>
+      <form id="liveLoginForm" class="live-login-form">
+        <label>
+          Email
+          <input id="liveLoginEmail" type="email" autocomplete="email" required>
+        </label>
+        <label>
+          Password
+          <input id="liveLoginPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <button class="live-button primary" type="submit">Join Live Session</button>
+      </form>
+      <p class="live-login-message" id="liveLoginMessage"></p>
+    </section>
+
+    <section class="stage" id="liveMain">
+      <div class="song-picker" id="songPicker" aria-label="Choose a saved song"></div>
+      <div class="section-picker" id="sectionPicker" aria-label="Choose your choir section"></div>
+      <div class="device-profile" aria-label="This device profile">
+        <div>
+          <p class="kicker">Make it yours</p>
+          <h2>Your cue profile</h2>
+        </div>
+        <div class="device-profile-fields">
+          <label>
+            Display name
+            <input id="liveProfileName" type="text" maxlength="30" placeholder="Your name or section">
+          </label>
+          <label>
+            Picture
+            <input id="liveProfilePhoto" type="file" accept="image/*">
+          </label>
+        </div>
+      </div>
+      <div class="live-buddy-coach" id="liveBuddyCoach">
+        <div class="live-buddy-character" id="liveBuddyCharacter" aria-hidden="true"></div>
+        <div class="live-buddy-bubble" id="liveBuddyBubble">Your buddy will guide this song.</div>
+      </div>
+      <div class="stage-status" id="liveStatus">Load a saved song from the teacher screen.</div>
+
+      <div class="timeline-wrap">
+        <div class="time-rail">
+          <span id="elapsedTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+
+        <div class="live-timeline" id="liveTimeline">
+          <div class="timeline-base"></div>
+          <div class="timeline-progress" id="timelineProgress"></div>
+          <div class="timeline-cues" id="timelineCues"></div>
+          <div class="timeline-slider" id="timelineSlider" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="live-controls">
+        <button class="live-button secondary" id="armAudioButton" type="button">Ready This Device</button>
+        <button class="live-button primary" id="startLiveButton" type="button">Start All Devices</button>
+        <button class="live-button secondary" id="pauseLiveButton" type="button">Pause</button>
+        <button class="live-button secondary" id="resetLiveButton" type="button">Reset</button>
+      </div>
+    </section>
+
+    <audio id="backingTrack" preload="auto"></audio>
+    <audio id="voiceCue" preload="auto"></audio>
+
+    <footer class="live-footer">
+      © 2026 Akshay Setty. My Singing Buddy and Voice for All. All rights reserved.
+    </footer>
+  </main>
+
+  <script src="live.js"></script>
+</body>
+</html>

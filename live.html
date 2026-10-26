@@ -17,6 +17,7 @@
         <p class="kicker">My Singing Buddy</p>
         <h1 id="liveSongTitle">Live Cue Screen</h1>
       </div>
+      <a class="studio-link" href="index.html">← Back to studio</a>
       <div class="student-pill">
         <img id="liveStudentPhoto" alt="Session profile preview">
         <div>
@@ -49,6 +50,8 @@
     <section class="stage" id="liveMain">
       <div class="song-picker" id="songPicker" aria-label="Choose a saved song"></div>
       <div class="section-picker" id="sectionPicker" aria-label="Choose your choir section"></div>
+      <details class="profile-settings">
+        <summary>Personalize this device <span>Display name &amp; picture</span></summary>
       <div class="device-profile" aria-label="This device profile">
         <div>
           <p class="kicker">Make it yours</p>
@@ -65,11 +68,12 @@
           </label>
         </div>
       </div>
+      </details>
       <div class="live-buddy-coach" id="liveBuddyCoach">
         <div class="live-buddy-character" id="liveBuddyCharacter" aria-hidden="true"></div>
         <div class="live-buddy-bubble" id="liveBuddyBubble">Your buddy will guide this song.</div>
       </div>
-      <div class="stage-status" id="liveStatus">Load a saved song from the teacher screen.</div>
+      <div class="stage-status" id="liveStatus" role="status" aria-live="polite">Load a saved song from the teacher screen.</div>
 
       <div class="timeline-wrap">
         <div class="time-rail">

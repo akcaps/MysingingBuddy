@@ -19,9 +19,13 @@
         <p class="hero-copy">
           Join the music with visual cues, shared rehearsals, and a singing buddy by your side.
         </p>
+        <div class="intro-features"><span>01 <strong>Prepare your music</strong>Upload tracks and build lyric cues.</span><span>02 <strong>Find your part</strong>Give each choir section a clear entry.</span><span>03 <strong>Rehearse together</strong>Bring every device into the same moment.</span></div>
       </div>
 
       <div class="auth-panel">
+        <p class="panel-eyebrow">YOUR REHEARSAL STARTS HERE</p>
+        <h2 class="auth-title">Welcome to the studio.</h2>
+        <p class="auth-intro">Create, connect, and make room for every voice.</p>
         <div class="auth-tabs">
           <button class="tab-button active" id="showLoginButton" type="button">Log In</button>
           <button class="tab-button" id="showSignupButton" type="button">Sign Up</button>
@@ -30,7 +34,7 @@
         <form id="loginForm" class="auth-form">
           <label>
             Email
-            <input id="loginEmail" type="email" placeholder="teacher@example.com" required>
+            <input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
           </label>
 
           <label>
@@ -45,17 +49,17 @@
         <form id="signupForm" class="auth-form hidden">
           <label>
             Display name
-            <input id="signupName" type="text" placeholder="Music teacher or choir leader" required>
+            <input id="signupName" type="text" placeholder="Your name" autocomplete="name" required>
           </label>
 
           <label>
             Email
-            <input id="signupEmail" type="email" placeholder="teacher@example.com" required>
+            <input id="signupEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
           </label>
 
           <label>
             Password
-            <input id="signupPassword" type="password" placeholder="Create a password" required>
+            <input id="signupPassword" type="password" autocomplete="new-password" minlength="8" aria-describedby="passwordHelp" placeholder="Create a password" required>
           </label>
 
           <label>
@@ -63,13 +67,14 @@
             <input id="signupConfirmPassword" type="password" placeholder="Confirm your password" required>
           </label>
 
-          <button class="button accent" type="submit">Create Account</button>
+          <p class="field-help" id="passwordHelp">Use at least 8 characters with uppercase, lowercase, and a number.</p>
+          <button class="button accent" type="submit">Create Free Account</button>
         </form>
 
         <form id="passwordResetForm" class="auth-form hidden">
           <label>
             Account email
-            <input id="resetEmail" type="email" placeholder="teacher@example.com">
+            <input id="resetEmail" type="email" placeholder="you@example.com" autocomplete="email">
           </label>
 
           <button class="button secondary" id="requestResetCodeButton" type="button">Get Reset Code</button>
@@ -104,7 +109,7 @@
           <button class="button secondary" id="resendCodeButton" type="button">Get New Code</button>
         </div>
 
-        <p class="auth-message" id="authMessage">Log in or create an account to continue.</p>
+        <p class="auth-message" id="authMessage" role="status" aria-live="polite">Log in or create an account to continue.</p>
         <p class="legal-note">© 2026 Akshay Setty. My Singing Buddy and Voice for All. All rights reserved.</p>
       </div>
     </div>
@@ -246,7 +251,7 @@
         <div class="audio-panel">
           <div>
             <strong id="trackStatus">No karaoke track uploaded yet</strong>
-            <p id="trackMeta">This is the track the teen screen follows.</p>
+            <p id="trackMeta">This is the track the live screen follows.</p>
           </div>
           <audio id="trackPlayer" controls preload="metadata"></audio>
         </div>

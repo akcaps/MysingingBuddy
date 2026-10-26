@@ -1252,12 +1252,12 @@ function hydrateActiveSong() {
   renderCueIntervals();
   activeSongTitle.textContent = activeSong.title;
   activeSongSummary.textContent = `${formatCueCount(activeSong)} across ${formatSectionCount(activeSong).toLowerCase()} ready for the live screen.`;
-  sliderStatus.textContent = "Ready to open on the teen big-screen page.";
+  sliderStatus.textContent = "Ready to open on the live cue screen.";
   openLiveButton.disabled = false;
   playTrackButton.disabled = false;
   stopTrackButton.disabled = false;
   persistActiveSession(activeSong.id).catch(() => {
-    sliderStatus.textContent = "Ready locally. Cloud session sync will retry when you open the teen screen.";
+    sliderStatus.textContent = "Ready locally. Cloud session sync will retry when you open the live screen.";
   });
 }
 
@@ -1283,7 +1283,7 @@ function resetStudio() {
   cuePlayer.dataset.filename = "";
   cuePlayer.dataset.source = "";
   trackStatus.textContent = "No karaoke track uploaded yet";
-  trackMeta.textContent = "Choose the instrumental or karaoke file that plays continuously on the teen screen.";
+  trackMeta.textContent = "Choose the instrumental or karaoke file that plays continuously on the live screen.";
   cueStatus.textContent = "No real singer track uploaded yet";
 }
 

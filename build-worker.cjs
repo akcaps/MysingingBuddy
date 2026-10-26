@@ -79,7 +79,7 @@ function serveStatic(pathname) {
 }
 
 async function handleApi(request, env, url) {
-  if (!env.DB || !env.BUCKET) {
+  if (!env.DB) {
     return json({ error: "Cloud storage is not configured yet." }, 503);
   }
 
@@ -125,6 +125,9 @@ async function handleApi(request, env, url) {
   }
 
   if (url.pathname.startsWith("/api/media/")) {
+    if (!env.BUCKET) {
+      return json({ error: "Audio storage is not configured yet." }, 503);
+    }
     return handleMedia(request, env, account.email, url.pathname.slice("/api/media/".length));
   }
 

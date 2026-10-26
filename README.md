@@ -11,7 +11,7 @@ My Singing Buddy powers Voice for All, an accessible choir rehearsal tool for ne
 - Minute-and-second cue inputs for longer songs.
 - Choir sections from 1 to 10, with cues assigned to specific sections.
 - A separate live screen where each device chooses its section.
-- Optional per-device session profile for a nickname/photo that is not saved to the account.
+- Optional per-device session profile for a display name/photo that is not saved to the account.
 - Shared Start All Devices countdown for joined screens on the same account.
 - Shared GO cue recovery so late cue presses jump the room back to the cue and keep all devices in sync.
 - Singer clips play from the real singer track while the karaoke track keeps playing underneath.
@@ -26,16 +26,15 @@ My Singing Buddy powers Voice for All, an accessible choir rehearsal tool for ne
 4. Review the cues and audio preview.
 5. Save the song to the account library.
 6. Open the live screen on each student device.
-7. On each live screen, choose the song, choose the section, add a session-only nickname/photo if allowed, and press Ready This Device.
+7. On each live screen, choose the song, choose the section, optionally add a display name/photo, and press Ready This Device.
 8. One joined device presses Start All Devices.
 
-## Important Notes
+## Development
 
-- Each browser must press Ready This Device once before sound can play. This is required by modern browser audio rules.
-- Use section labels or nicknames instead of legal student names. Do not enter student ID numbers, IEP/504 details, health information, grades, contact details, or other student records.
-- Student names/photos are not saved to the cloud account. Optional live-screen profile details are kept only in the current page session.
-- Uploaded music and photos should be original, licensed, public domain, or used with permission.
-- For real student use, get parent/school permission before showing student images or entering any personal information.
-- Passwords are stored as salted server-side password records. A full school deployment should still connect approved email delivery or a district-approved authentication provider.
-- This is not an official LCPS-approved tool until LCPS completes its review, approved-software process, and any required Data Privacy Agreement.
-- Copyright notice is included for the original code, copy, design, and project materials. For stronger protection, register eligible work with the U.S. Copyright Office and consider trademark registration for the name/logo.
+This project uses standard HTML, CSS, and JavaScript, with a generated Cloudflare Worker for account and rehearsal APIs.
+
+- Run `node build-worker.cjs` to build `dist/server/index.js`.
+- The deployed Worker needs a D1 binding named `DB` and an R2 binding named `BUCKET` for audio uploads.
+- Account creation is public: no invitation code, school affiliation, or approved email domain is required.
+- Serve the static files locally to preview the interface. Cloud account and shared rehearsal features require the Worker and its storage bindings.
+- Each device must press Ready This Device before audio playback, as required by browser audio rules.
